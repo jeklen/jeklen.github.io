@@ -1,0 +1,619 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="security,python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="data_hacking_practice 2一些帮助函数函数1:将IPv4地址转化为整型1234567def ip2int(addr):  try:    return struct.unpack(&amp;quot;!I&amp;quot;, socket.inet_aton(addr))[0]  except Exception as e:    pass    #print &amp;quot;Error: %s">
+<meta name="keywords" content="security,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="data_hacking_practice 2">
+<meta property="og:url" content="http://blog.myyoulemei.com/2016/08/17/data-hacking-practice-2/index.html">
+<meta property="og:site_name" content="云止">
+<meta property="og:description" content="data_hacking_practice 2一些帮助函数函数1:将IPv4地址转化为整型1234567def ip2int(addr):  try:    return struct.unpack(&amp;quot;!I&amp;quot;, socket.inet_aton(addr))[0]  except Exception as e:    pass    #print &amp;quot;Error: %s">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-07-30T01:43:21.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="data_hacking_practice 2">
+<meta name="twitter:description" content="data_hacking_practice 2一些帮助函数函数1:将IPv4地址转化为整型1234567def ip2int(addr):  try:    return struct.unpack(&amp;quot;!I&amp;quot;, socket.inet_aton(addr))[0]  except Exception as e:    pass    #print &amp;quot;Error: %s">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.myyoulemei.com/2016/08/17/data-hacking-practice-2/"/>
+
+  <title> data_hacking_practice 2 | 云止 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">云止</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                data_hacking_practice 2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T14:34:57+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/17/data-hacking-practice-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/data-hacking-practice-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="data-hacking-practice-2"><a href="#data-hacking-practice-2" class="headerlink" title="data_hacking_practice 2"></a>data_hacking_practice 2</h1><h2 id="一些帮助函数"><a href="#一些帮助函数" class="headerlink" title="一些帮助函数"></a>一些帮助函数</h2><h3 id="函数1-将IPv4地址转化为整型"><a href="#函数1-将IPv4地址转化为整型" class="headerlink" title="函数1:将IPv4地址转化为整型"></a>函数1:将IPv4地址转化为整型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def ip2int(addr):</div><div class="line">  try:</div><div class="line">    return struct.unpack(&quot;!I&quot;, socket.inet_aton(addr))[0]</div><div class="line">  except Exception as e:</div><div class="line">    pass</div><div class="line">    #print &quot;Error: %s - %s&quot; % (str(e), addr)</div><div class="line">  return 0</div></pre></td></tr></table></figure>
+<p>这个函数名其实也挺有意思，ip To int，将ip地址转化为整型。</p>
+<p>python的socket模块里有很多对ip地址进行转换的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socket.inet_aton(ip_string)</div></pre></td></tr></table></figure></p>
+<p>将带点号的IPv4地址（eg：”123.45.67.89”)转化成32-bit packed binary format<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct.unpack(fmt, string)</div></pre></td></tr></table></figure></p>
+<p>struct模块可以对python值，C结构体之间执行转化（具体意思没怎么明白），同时它可以对<br>binary data进行操作。</p>
+<p>上面的函数的作用：将string转化为fmt格式。上面fmt参数中!表示字节顺序（byte order）是<br>按照network（即小段法big-endian），I表示无符号整型。</p>
+<p>返回：一个元组（即使只有一个元素），本例中就只有一个元素。</p>
+<h3 id="函数2-得到IP地址对应的地理位置"><a href="#函数2-得到IP地址对应的地理位置" class="headerlink" title="函数2:得到IP地址对应的地理位置"></a>函数2:得到IP地址对应的地理位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def maxmind_lookup(ip):</div><div class="line">  if ip in maxcache:</div><div class="line">    return maxcache[ip]</div><div class="line">  i = ip2int(ip)</div><div class="line">  if i == 0:</div><div class="line">    return &quot;UNKNOWN&quot;</div><div class="line">  results = list(maxmind.loc[(maxmind[&quot;low&quot;] &lt; i) &amp; (maxmind(&quot;high&quot;) &gt; i)][&apos;asn&apos;])</div><div class="line">  if len(results) &gt; 0:</div><div class="line">    maxcache[ip] = results[0]</div><div class="line">    return results[0]</div><div class="line">  maxcache[ip] = &quot;UNKNOWN&quot;</div><div class="line">  return &quot;UNKNOWN&quot;</div></pre></td></tr></table></figure>
+<p>maxmind是一家公司，这家公司提供了一个免费的CSV文件——GeoIPASNum2.csv，里面包含了IP地址<br>对应的地理位置。在这之前，已经用以下代码导入数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">maxmind = pd.read_csv(&quot;./GeoIPASNum2.csv&quot;, sep=&apos;,&apos;, header=None, names=[&apos;low&apos;,&apos;high&apos;,&apos;asn&apos;])</div><div class="line">maxmind[&apos;low&apos;] = maxmind[&apos;low&apos;].astype(int)</div><div class="line">maxmind[&apos;high&apos;] = maxmind[&apos;high&apos;].astype(int)</div></pre></td></tr></table></figure></p>
+<p>maxcache是之前定义的一个字典，key是ip，value是地理位置的字符串。</p>
+<p>函数2的功能可以说是查找一个ip地址，如果它在maxcache中存在了，就直接返回地理位置<br>如果不存在，则将它加入maxcache，然后返回地理位置，如果找不到位置，就直接返回<br>“UNKNOWN”.</p>
+<p>这里的有一行代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">results = list(maxmind.loc[(maxmind[&quot;low&quot;] &lt; i) &amp; (maxmind(&quot;high&quot;) &gt; i)][&apos;asn&apos;])</div></pre></td></tr></table></figure></p>
+<p>results中最多只有一个元素，所以下面直接取results[0]作为物理地址的字符串。</p>
+<h3 id="函数3："><a href="#函数3：" class="headerlink" title="函数3："></a>函数3：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def box_plot_df_setup(series_a, series_b):</div><div class="line">    # Count up all the times that a category from series_a</div><div class="line">    # matches up with a category from series_b. This is</div><div class="line">    # basically a gigantic contingency table</div><div class="line">    cont_table = collections.defaultdict(lambda : collections.Counter())</div><div class="line">    for val_a, val_b in zip(series_a.values, series_b.values):</div><div class="line">        cont_table[val_a][val_b] += 1</div><div class="line"></div><div class="line">    # Create a dataframe</div><div class="line">    # A dataframe with keys from series_a as the index, series_b_keys</div><div class="line">    # as the columns and the counts as the values.</div><div class="line">    dataframe = pd.DataFrame(cont_table.values(), index=cont_table.keys())</div><div class="line">    dataframe.fillna(0, inplace=True)</div><div class="line">    return dataframe</div></pre></td></tr></table></figure>
+<p>相关知识：pandas，collections，lambda，zip<br>pandas还有点不清楚，看完pandas再更。</p>
+<h3 id="函数4：判断是否是ip地址"><a href="#函数4：判断是否是ip地址" class="headerlink" title="函数4：判断是否是ip地址"></a>函数4：判断是否是ip地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def is_ip(ip):</div><div class="line">    try:</div><div class="line">        socket.inet_aton(ip)</div><div class="line">        return True</div><div class="line">    except socket.error:</div><div class="line">        return False</div></pre></td></tr></table></figure>
+<p>参考</p>
+<p><a href="https://docs.python.org/2/library/struct.html" target="_blank" rel="external">https://docs.python.org/2/library/struct.html</a><br><a href="https://docs.python.org/2/library/socket.html" target="_blank" rel="external">https://docs.python.org/2/library/socket.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/security/" rel="tag">#security</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/17/python-TCP-programming/" rel="next" title="python TCP programming">
+                <i class="fa fa-chevron-left"></i> python TCP programming
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/19/data-hacking-practice-3/" rel="prev" title="data_hacking_practice_3">
+                data_hacking_practice_3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/17/data-hacking-practice-2/"
+           data-title="data_hacking_practice 2" data-url="http://blog.myyoulemei.com/2016/08/17/data-hacking-practice-2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zhang.png"
+               alt="Zhang Qiaolun" />
+          <p class="site-author-name" itemprop="name">Zhang Qiaolun</p>
+          <p class="site-description motion-element" itemprop="description">云，飘逸者也。然，知止后定</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data-hacking-practice-2"><span class="nav-number">1.</span> <span class="nav-text">data_hacking_practice 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些帮助函数"><span class="nav-number">1.1.</span> <span class="nav-text">一些帮助函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数1-将IPv4地址转化为整型"><span class="nav-number">1.1.1.</span> <span class="nav-text">函数1:将IPv4地址转化为整型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数2-得到IP地址对应的地理位置"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数2:得到IP地址对应的地理位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数3："><span class="nav-number">1.1.3.</span> <span class="nav-text">函数3：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数4：判断是否是ip地址"><span class="nav-number">1.1.4.</span> <span class="nav-text">函数4：判断是否是ip地址</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Qiaolun</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qlzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="matplotlib,pyplot和pylab：他们是怎么联系在一起的？matplotlib是一个完整（whole）的库，matplotlib.pyplot是matplotlib是matplotlib中的一个库；pylab是安装matplotlib时一起安装的。 pyplot给底层的基于对象的画图库(object-oriented plotting library)提供了一个状态机界面(state">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="matplotlib与pylab区分及matplotlib入门">
+<meta property="og:url" content="http://blog.myyoulemei.com/2016/08/20/关于python数据分析库的一些总结/index.html">
+<meta property="og:site_name" content="云止">
+<meta property="og:description" content="matplotlib,pyplot和pylab：他们是怎么联系在一起的？matplotlib是一个完整（whole）的库，matplotlib.pyplot是matplotlib是matplotlib中的一个库；pylab是安装matplotlib时一起安装的。 pyplot给底层的基于对象的画图库(object-oriented plotting library)提供了一个状态机界面(state">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://blog.myyoulemei.com/2016/08/20/关于python数据分析库的一些总结/关于python数据分析库的一些总结/figure.png">
+<meta property="og:updated_time" content="2017-07-30T01:43:21.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="matplotlib与pylab区分及matplotlib入门">
+<meta name="twitter:description" content="matplotlib,pyplot和pylab：他们是怎么联系在一起的？matplotlib是一个完整（whole）的库，matplotlib.pyplot是matplotlib是matplotlib中的一个库；pylab是安装matplotlib时一起安装的。 pyplot给底层的基于对象的画图库(object-oriented plotting library)提供了一个状态机界面(state">
+<meta name="twitter:image" content="http://blog.myyoulemei.com/2016/08/20/关于python数据分析库的一些总结/关于python数据分析库的一些总结/figure.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.myyoulemei.com/2016/08/20/关于python数据分析库的一些总结/"/>
+
+  <title> matplotlib与pylab区分及matplotlib入门 | 云止 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">云止</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                matplotlib与pylab区分及matplotlib入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-20T10:57:01+08:00" content="2016-08-20">
+              2016-08-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/20/关于python数据分析库的一些总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/20/关于python数据分析库的一些总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="matplotlib-pyplot和pylab：他们是怎么联系在一起的？"><a href="#matplotlib-pyplot和pylab：他们是怎么联系在一起的？" class="headerlink" title="matplotlib,pyplot和pylab：他们是怎么联系在一起的？"></a>matplotlib,pyplot和pylab：他们是怎么联系在一起的？</h2><p>matplotlib是一个完整（whole）的库，matplotlib.pyplot是matplotlib是matplotlib中的一个库；pylab是安装matplotlib时一起安装的。</p>
+<p>pyplot给底层的基于对象的画图库(object-oriented plotting library)提供了一个状态机界面(state-machine interface)。</p>
+<p>导入pylab时，会将matplotlib.pyplot(用于作图)和numpy(用于数学和向量)导入到一个作用域里（name space）。</p>
+<p><em>虽然很多例子用到了pylab，它不再被推荐。对于不用交互式的作图，推荐使用pyplot创建图像然后使用OO界面作图。</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- noplot -*-</div><div class="line">&quot;&quot;&quot;</div><div class="line">A pure OO (look Ma, no pylab!) example using the agg backend</div><div class="line">&quot;&quot;&quot;</div><div class="line">from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas</div><div class="line">from matplotlib.figure import Figure</div><div class="line"></div><div class="line">fig = Figure()</div><div class="line">canvas = FigureCanvas(fig)</div><div class="line">ax = fig.add_subplot(111)</div><div class="line">ax.plot([1, 2, 3])</div><div class="line">ax.set_title(&apos;hi mom&apos;)</div><div class="line">ax.grid(True)</div><div class="line">ax.set_xlabel(&apos;time&apos;)</div><div class="line">ax.set_ylabel(&apos;volts&apos;)</div><div class="line">canvas.print_figure(&apos;test&apos;)</div></pre></td></tr></table></figure></p>
+<p>下面是两个例子,在python中可以用两种方式作图，推荐第一种。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import matplotlib</div><div class="line">matplotlib.pyplot(...)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 推荐这一种</div><div class="line">import pylab</div><div class="line">pylab.plot(...)</div></pre></td></tr></table></figure>
+<h2 id="matplotlib入门"><a href="#matplotlib入门" class="headerlink" title="matplotlib入门"></a>matplotlib入门</h2><p>以下内容翻译自<a href="http://matplotlib.org/faq/usage_faq.html#matplotlib-pyplot-and-pylab-how-are-they-related" target="_blank" rel="external">matplotlib usage</a></p>
+<h3 id="大体概念"><a href="#大体概念" class="headerlink" title="大体概念"></a>大体概念</h3><p>matplotlib因为有着大量的代码库让很多的新手望而生畏。然而掌握了一些相对简单的概念框架和一些要点，matplotlib中的大部分都可以被理解。matplotlib中所有的东西都用层次化来组织。在最高层是matplotlib.pyplot模块提供的状态机环境（state-machine environment)，在这一层，简单地函数被用来向现在的图像(figure)中的axes添加作图成分(线条，图像和文字等)</p>
+<p>下一层是面向对象界面，在这里pyplot之辈用于几个简单函数（比如说创建图像），用户显式（explicit）创建并跟踪figure和axes对象。在这一层，用户用pyplot创建figures，通过figures，可以创建一个或多个axes对象。这些axes对象接着被用于大部分的作图操作。</p>
+<h3 id="图像的构成部分"><a href="#图像的构成部分" class="headerlink" title="图像的构成部分"></a>图像的构成部分</h3><p><img src="关于python数据分析库的一些总结/figure.png" alt=""></p>
+<h3 id="作图函数的输入方式"><a href="#作图函数的输入方式" class="headerlink" title="作图函数的输入方式"></a>作图函数的输入方式</h3><p>所有的作图函数输入格式为np.array或np.ma.masked_array<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 转化panda.DataFrame</div><div class="line">a = pandas.DataFrame(np.random.rand(4, 5), columns = list(&apos;abcde&apos;))</div><div class="line">a.asndarray = a.values</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 转化np.matrix</div><div class="line">b = np.matrix([1, 2], [3, 4])</div><div class="line">b_asarray = np.asarray(b)</div></pre></td></tr></table></figure>
+<h3 id="编程风格"><a href="#编程风格" class="headerlink" title="编程风格"></a>编程风格</h3><p>以下是推荐的一种风格：pyplot style<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pyplot as plt</div><div class="line">import numpy as np</div><div class="line">x = np.arange(0, 10, 0.2)</div><div class="line">y = np.sin(x)</div><div class="line">fig = plt.figure()</div><div class="line">ax = fig.add_subplot(111)</div><div class="line">ax.plot(x, y)</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<p>有时人们会发现自己在一次次用不同的数据集做相同的作图操作，下面是推荐的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">def my_plotter(ax, data1, data2, param_dict):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    A helper function to make a graph</div><div class="line"></div><div class="line">    Parameters</div><div class="line">    ----------</div><div class="line">    ax : Axes</div><div class="line">        The axes to draw to</div><div class="line"></div><div class="line">    data1 : array</div><div class="line">       The x data</div><div class="line"></div><div class="line">    data2 : array</div><div class="line">       The y data</div><div class="line"></div><div class="line">    param_dict : dict</div><div class="line">       Dictionary of kwargs to pass to ax.plot</div><div class="line"></div><div class="line">    Returns</div><div class="line">    -------</div><div class="line">    out : list</div><div class="line">        list of artists added</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    out = ax.plot(data1, data2, **param_dict)</div><div class="line">    return out</div></pre></td></tr></table></figure></p>
+<p>然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fig, ax = plt.subplots(1, 1)</div><div class="line">my_plotter(ax, data1, data2, &#123;&apos;marker&apos;:&apos;x&apos;&#125;)</div><div class="line"># or if you wanted to have 2 sub-plots:</div><div class="line">fig, (ax1, ax2) = plt.subplots(1, 2)</div><div class="line">my_plotter(ax1, data1, data2, &#123;&apos;marker&apos;:&apos;x&apos;&#125;)</div><div class="line">my_plotter(ax2, data3, data4, &#123;&apos;marker&apos;:&apos;o&apos;&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="什么是backend"><a href="#什么是backend" class="headerlink" title="什么是backend"></a>什么是backend</h3><p>matplotlib有不同的用途和输出模式：一些人用matplotlib从python shell里动态输入并让画图窗口在输入时弹出，有些人把它整合进图形界面（wxpython，pygtk等）。为了支持所有的用途，matplotlib可以面向不同的输出，每一种都称为一个backend，frontend称为用户面对的代码（比如画图代码）</p>
+<h3 id="什么是交互模式"><a href="#什么是交互模式" class="headerlink" title="什么是交互模式"></a>什么是交互模式</h3><p>作图窗口是否出现，什么时候出现，一个图像在屏幕上画出来之后一个脚本是否继续，取决于调用的函数和方法，以及一个决定matplotlib是否处于交互模式(interactive mode)的变量。这个布尔型变量可以用matplotlibrc文件来设定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 打开交互模式</div><div class="line">matplotlib.pyplot.ion()</div><div class="line"># 第二种打开交互模式的方法</div><div class="line">matplotlib.interactive()</div><div class="line"># 查询交互模式</div><div class="line">matplotlib.is_interactive()</div><div class="line"># 关闭交互模式</div><div class="line">matplotlib.pyplot.ioff()</div></pre></td></tr></table></figure></p>
+<h4 id="interactive-example-交互模式例子"><a href="#interactive-example-交互模式例子" class="headerlink" title="interactive example(交互模式例子)"></a>interactive example(交互模式例子)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pyplot as plt</div><div class="line">plt.ion()</div><div class="line">plt.plot([1.6, 2.7])</div></pre></td></tr></table></figure>
+<p>现在可以看见图像，同时可以添加元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.title(&quot;interactive test&quot;)</div><div class="line">plt.xlabel(&quot;index&quot;)</div></pre></td></tr></table></figure></p>
+<p>但是下面的代码却没有作用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ax = plt.gca()</div><div class="line">ax.plot([3.1, 2.2])</div></pre></td></tr></table></figure></p>
+<p>原因在于Axes方法不会自动调用draw_if_interactive()，这时可以调用draw()来显示图像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.draw()</div></pre></td></tr></table></figure></p>
+<h4 id="Non-interactive-例子-非交互模式例子"><a href="#Non-interactive-例子-非交互模式例子" class="headerlink" title="Non-interactive 例子(非交互模式例子)"></a>Non-interactive 例子(非交互模式例子)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pyplot as plt</div><div class="line">plt.ioff()</div><div class="line">plt.plot([1.6, 2.7])</div></pre></td></tr></table></figure>
+<p>现在没有显示图像，需要下面的代码来显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<p>这时，终端没有反应，因为只有关闭了显示图像的窗口才能输入其他的命令。同时，这个模式延迟了所有作图操作，直到show()被调用。这比起代码中给一条线增加一个新特性就要重新作图来的有效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 这是新版本的特性，可以调用多次plt.show()</div><div class="line"># 下面代码会创建3个图像，一次一个</div><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">plt.ioff()</div><div class="line">for i in range(3):</div><div class="line">    plt.plot(np.random.rand(10))</div><div class="line">    plt.show()</div></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>交互模式draw(), 非交互模式show()</p>
+<h3 id="一个遇到的小问题"><a href="#一个遇到的小问题" class="headerlink" title="一个遇到的小问题"></a>一个遇到的小问题</h3><ul>
+<li>问题1:fig.add_subplot(111)中111是什么意思<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import matplotlib.pyplot as plt</div><div class="line">x = [1, 2, 3, 4, 5]</div><div class="line">y = [1, 4, 9, 16, 25]</div><div class="line">fig = plt.figure()</div><div class="line">fig.add_subplot(111)</div><div class="line">plt.scatter(x, y)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的代码中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fig.add_subplot(111)</div></pre></td></tr></table></figure></p>
+<p>111表示1x1grid，firstsubplot。更多的：“234”代表”2x3 grid, 4th subplot”。也可以写成<code>add_subplot(1,1,1)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 一个四方格的图像</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">fig = plt.figure()</div><div class="line">fig.add_subplot(221)   #top left</div><div class="line">fig.add_subplot(222)   #top right</div><div class="line">fig.add_subplot(223)   #bottom left</div><div class="line">fig.add_subplot(224)   #bottom right</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 左边两个合在一起</div><div class="line">subplot(2,2,[1 3])</div><div class="line">subplot(2,2,2)</div><div class="line">subplot(2,2,4)</div><div class="line"># 上面两个合在一起</div><div class="line">subplot(2,2,1:2)</div><div class="line">subplot(2,2,3)</div><div class="line">subplot(2,2,4)</div></pre></td></tr></table></figure>
+<ul>
+<li>问题2：plt.subplots()的用法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fig, ax = plt.subplot()</div><div class="line"># 等同于</div><div class="line">fig = plt.figure()</div><div class="line">ax = fig.add_subplot(111)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>plt.subplot返回一个元组，包含了figure和axes对象。fig接下来可以用于修改图像层面的特性或者是保存图像为图像文件(e.g. with <code>fig.savefig(&#39;youfilename.png&#39;)</code>)</p>
+<p>参考</p>
+<p><a href="http://stackoverflow.com/questions/12987624/confusion-between-numpy-scipy-matplotlib-and-pylab" target="_blank" rel="external">http://stackoverflow.com/questions/12987624/confusion-between-numpy-scipy-matplotlib-and-pylab</a><br><a href="http://stackoverflow.com/questions/16849483/which-is-the-recommended-way-to-plot-matplotlib-or-pylab" target="_blank" rel="external">http://stackoverflow.com/questions/16849483/which-is-the-recommended-way-to-plot-matplotlib-or-pylab</a><br><a href="http://stackoverflow.com/questions/11469336/what-is-the-difference-between-pylab-and-pyplot" target="_blank" rel="external">http://stackoverflow.com/questions/11469336/what-is-the-difference-between-pylab-and-pyplot</a><br><a href="http://matplotlib.org/faq/usage_faq.html#matplotlib-pyplot-and-pylab-how-are-they-related" target="_blank" rel="external">http://matplotlib.org/faq/usage_faq.html#matplotlib-pyplot-and-pylab-how-are-they-related</a><br><a href="http://matplotlib.org/examples/api/agg_oo.html" target="_blank" rel="external">http://matplotlib.org/examples/api/agg_oo.html</a><br><a href="http://stackoverflow.com/questions/3584805/in-matplotlib-what-does-the-argument-mean-in-fig-add-subplot111" target="_blank" rel="external">http://stackoverflow.com/questions/3584805/in-matplotlib-what-does-the-argument-mean-in-fig-add-subplot111</a><br><a href="http://stackoverflow.com/questions/34162443/why-do-many-examples-use-fig-ax-plt-subplots-in-matplotlib-pyplot-python" target="_blank" rel="external">http://stackoverflow.com/questions/34162443/why-do-many-examples-use-fig-ax-plt-subplots-in-matplotlib-pyplot-python</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/19/Python-Lambda/" rel="next" title="Python: Lambda">
+                <i class="fa fa-chevron-left"></i> Python: Lambda
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/20/data-hacking-practice-4/" rel="prev" title="data-hacking-practice-4">
+                data-hacking-practice-4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/20/关于python数据分析库的一些总结/"
+           data-title="matplotlib与pylab区分及matplotlib入门" data-url="http://blog.myyoulemei.com/2016/08/20/关于python数据分析库的一些总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zhang.png"
+               alt="Zhang Qiaolun" />
+          <p class="site-author-name" itemprop="name">Zhang Qiaolun</p>
+          <p class="site-description motion-element" itemprop="description">云，飘逸者也。然，知止后定</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib-pyplot和pylab：他们是怎么联系在一起的？"><span class="nav-number">1.</span> <span class="nav-text">matplotlib,pyplot和pylab：他们是怎么联系在一起的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib入门"><span class="nav-number">2.</span> <span class="nav-text">matplotlib入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大体概念"><span class="nav-number">2.1.</span> <span class="nav-text">大体概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像的构成部分"><span class="nav-number">2.2.</span> <span class="nav-text">图像的构成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作图函数的输入方式"><span class="nav-number">2.3.</span> <span class="nav-text">作图函数的输入方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程风格"><span class="nav-number">2.4.</span> <span class="nav-text">编程风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是backend"><span class="nav-number">2.5.</span> <span class="nav-text">什么是backend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是交互模式"><span class="nav-number">2.6.</span> <span class="nav-text">什么是交互模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#interactive-example-交互模式例子"><span class="nav-number">2.6.1.</span> <span class="nav-text">interactive example(交互模式例子)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-interactive-例子-非交互模式例子"><span class="nav-number">2.6.2.</span> <span class="nav-text">Non-interactive 例子(非交互模式例子)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.6.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个遇到的小问题"><span class="nav-number">2.7.</span> <span class="nav-text">一个遇到的小问题</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Qiaolun</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qlzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
