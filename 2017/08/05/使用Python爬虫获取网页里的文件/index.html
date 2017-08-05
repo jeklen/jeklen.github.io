@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="云止">
 <meta property="og:description" content="初衷最近想学CSAPP，软院有一个课程网站，上面有一百多个文件。如果是点击链接一个接一个下载的话，要很久。这个时候就要用python爬虫啦~首先查看网页源代码，发现：  所有网页链接都在一个网页  href标签里的地址是相对路径，在目录http://ipads.se.sjtu.edu.cn/courses/ics/  课件对应的是ppt格式，作业对应的是pdf格式   爬虫设计爬虫使用Reques">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-05T08:21:52.980Z">
+<meta property="og:updated_time" content="2017-08-05T08:24:52.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Python爬虫获取网页里的文件">
 <meta name="twitter:description" content="初衷最近想学CSAPP，软院有一个课程网站，上面有一百多个文件。如果是点击链接一个接一个下载的话，要很久。这个时候就要用python爬虫啦~首先查看网页源代码，发现：  所有网页链接都在一个网页  href标签里的地址是相对路径，在目录http://ipads.se.sjtu.edu.cn/courses/ics/  课件对应的是ppt格式，作业对应的是pdf格式   爬虫设计爬虫使用Reques">
@@ -295,6 +295,7 @@
 </li>
 </ul>
 <h2 id="爬虫设计"><a href="#爬虫设计" class="headerlink" title="爬虫设计"></a>爬虫设计</h2><p>爬虫使用Requests库加BeautifulSoup实现，url地址的获取采取形式解析与搜索结合的方法提高速度。首先搜索a标签，然后用形式解析的方法获取对应的href地址。</p>
+<p><a href="https://github.com/jeklen/py_scraping/blob/master/example/get_csapp.py" target="_blank" rel="external">源代码链接</a></p>
 <p>如下是获取到的文件截图：<br>!(./images/1.png)<br>!(./images/2.png)</p>
 
       
